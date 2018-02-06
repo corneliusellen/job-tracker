@@ -1,7 +1,7 @@
 <h1>Current Categories:</h1>
 <% Category.all.each do |category| %>
   <ul>
-    <li><%= category.name %></li>
+    <li><%= link_to(category.name, category_path(category)) %></li>
     <li><%= link_to("Edit", edit_category_path(category)) %></li>
     <li><%= link_to("Delete", category_path(category), method: "delete") %></li>
   </ul>
