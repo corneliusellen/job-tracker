@@ -1,5 +1,10 @@
 class CategoriesController < ApplicationController
 
+
+  def index
+    
+  end
+
   def new
     @category = Category.new
   end
@@ -10,7 +15,7 @@ class CategoriesController < ApplicationController
       redirect_to category_path(@category)
     else
       render :new
-    end 
+    end
   end
 
   def show
