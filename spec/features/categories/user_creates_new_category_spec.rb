@@ -13,4 +13,17 @@ describe "user creates new category" do
       expect(Category.count).to eq(1)
     end
   end
+
+  context "user tries to create category that already exists" do
+    scenario "user is brought back to create category form" do
+      Category.create!(name: "purple")
+
+      visit new_category_path
+      fill_in("category[name]", with: "purple")
+      click_button("Create")
+
+      # expect(current_path).to eq(category_path) #why does this not work, and why is it not new_category_path? The render :new seems to be that it should go there.
+      expect(Category.count).to eq(1)
+    end
+  end
 end
