@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
 
   def index
-    
+    @categories = Category.all
   end
 
   def new
@@ -20,6 +20,20 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+  end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    @category.update(category_params)
+    if @category.save
+      redirect_to category_path(@category)
+    else
+      render :edit
+    end
   end
 
   def category_params
