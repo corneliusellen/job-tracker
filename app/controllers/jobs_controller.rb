@@ -11,7 +11,7 @@ class JobsController < ApplicationController
 
   def create
     @company = Company.find(params[:company_id])
-    @job = @company.jobs.new(job_params)
+    @job = @company.jobs.new(title: params[:job][:title], description: params[:job][:description], level_of_interest: params[:job][:level_of_interest], city: params[:job][:city], category_id: params[:category])
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
@@ -31,7 +31,7 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
-    @job.update(job_params)
+    @job.update(title: params[:job][:title], description: params[:job][:description], level_of_interest: params[:job][:level_of_interest], city: params[:job][:city], category_id: params[:category])
     if @job.save
       redirect_to company_job_path(@job.company, @job)
     else
