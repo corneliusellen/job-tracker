@@ -33,7 +33,7 @@ describe "User sees a specific job" do
     visit company_job_path(company, job)
     fill_in "comment[author]", with: "Ellen"
     fill_in "comment[body]", with: "This is chronic."
-    click_on "Submit"
+    click_button "Create"
 
     expect(current_path).to eq(company_job_path(company, job))
     expect(page).to have_content("Ellen")
