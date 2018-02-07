@@ -3,8 +3,9 @@ require 'rails_helper'
 describe "user edits an existing job" do
   context "user links from company's jobs page" do
     scenario "user sees form with prefilled inputs containing current job's info" do
+      category = Category.create!(name: "purple")
       company = Company.create!(name: "hey")
-      job = Job.create!(title: "Mascot", description: "Dress up as a panda and wave at people!", level_of_interest: 50, city: "Muskegon", company_id: company.id)
+      job = Job.create!(title: "Mascot", description: "Dress up as a panda and wave at people!", level_of_interest: 50, city: "Muskegon", company_id: company.id, category_id: category.id)
 
       visit company_jobs_path(company)
       click_link "Edit"
@@ -15,8 +16,9 @@ describe "user edits an existing job" do
     end
 
     scenario "user fills in form, submits form, and sees job's show page with updated information" do
+      category = Category.create!(name: "purple")
       company = Company.create!(name: "hey")
-      job = Job.create!(title: "Mascot", description: "Dress up as a panda and wave at people!", level_of_interest: 50, city: "Muskegon", company_id: company.id)
+      job = Job.create!(title: "Mascot", description: "Dress up as a panda and wave at people!", level_of_interest: 50, city: "Muskegon", company_id: company.id, category_id: category.id)
       new_title = "Special Company Representative"
 
       visit edit_company_job_path(company, job)
