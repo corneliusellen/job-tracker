@@ -10,23 +10,24 @@ describe Comment do
   end
 
   describe "validations" do
-    it "is invalid without an author"
-    job = Job.build()
-    comment = Comment.new(body: "love this article", job: job.id)
+    it "is invalid without an author" do
+      job = Job.create()
+      comment = Comment.new(body: "love this article", job_id: job.id)
 
-    expect(comment).to be_invalid
-  end
+      expect(comment).to be_invalid
+    end
 
-  it "is invalid without a body" do
-  job = Job.build()
-  comment = Comment.new(author: "me", job: job.id)
+    it "is invalid without a body" do
+      job = Job.create()
+      comment = Comment.new(author: "me", job_id: job.id)
 
-  expect(comment).to be_invalid
-end
+      expect(comment).to be_invalid
+    end
 
-  it "is invalid without a job" do
-  comment = Comment.new(author: "me", body: "love this article")
+    it "is invalid without a job" do
+      comment = Comment.new(author: "me", body: "love this article")
 
-  expect(comment).to be_invalid
+      expect(comment).to be_invalid
+    end
   end
 end
