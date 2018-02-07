@@ -1,0 +1,5 @@
+<div class="comment-form">
+  <h4>Comment by: <%= comment.author %></h4>
+  <p>Comment by: <%= comment.body %></p>
+  <p>Posted <%= distance_of_time_in_words(comment.job.created_at, comment.created_at) %> later</p>
+</div>
