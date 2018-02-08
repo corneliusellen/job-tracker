@@ -45,6 +45,9 @@ class CompaniesController < ApplicationController
     redirect_to companies_path
   end
 
+  def dashboard
+    
+  end
 
   private
 
